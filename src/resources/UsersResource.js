@@ -2,9 +2,25 @@ import User  from "../models/user";
 
 import AdminJS from 'adminjs';
 
+
 export default {
     resource: User,
     options: {
+        parent: {
+            icon: "User",
+        },
+        actions: {
+            resetPassword: {
+                actionType: 'record',
+                icon: "Password",
+                handler: async (request, response, context) =>{
+                    return{
+                        record: context.record.toJSON(),
+                    };
+
+                },
+            },
+        },
         properties: {
             id: {
                 position: 1,
@@ -29,6 +45,31 @@ export default {
                     { value: 'manager', label: 'Gerente' },
                     { value: 'developer', label: 'Desenvolvedor' },
                 ],
+            },
+            status: {
+                position: 6,
+                isRequired: true,
+                availableValues: [
+                    { value: 'active', label: 'Ativo' },
+                    { value: 'archived', label: 'Arquivado' },
+            
+                ],
+            },
+            createdAt: {
+                position: 7,
+                isRequired: { list: true, filter: true, show: true, edit: false},
+            
+            },
+            updatedAt: {
+                position: 8,
+                isRequired: { list: true, filter: true, show: true, edit: false},
+            
+            },
+            password: {
+                isVisible: false,
+            },
+            password_hash: {
+                isVisible: false,
             },
         },
     },
