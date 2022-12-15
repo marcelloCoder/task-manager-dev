@@ -18,11 +18,7 @@ class Task extends Model {
         ),
         user_id: Sequelize.INTEGER,
         project_id: Sequelize.INTEGER,
-        path: Sequelize.STRING,
-        folder: Sequelize.STRING,
-        type: Sequelize.STRING,
-        filename: Sequelize.STRING,
-        size: Sequelize.INTEGER,
+
       },
 
       {
