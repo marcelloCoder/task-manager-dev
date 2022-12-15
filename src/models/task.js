@@ -1,9 +1,8 @@
 import Sequelize, { Model } from "sequelize";
 
-class Project extends Model {
+class Task extends Model {
   static init(sequelize) {
     super.init(
-
       {
         due_date: Sequelize.DATE,
         effort: Sequelize.INTEGER,
@@ -11,29 +10,28 @@ class Project extends Model {
         description: Sequelize.TEXT,
         order: Sequelize.INTEGER,
         status: Sequelize.ENUM(
-            "backlog",
-            "doing",
-            "done",
-            "approved",
-            "rejected"
-          ),
+          "backlog",
+          "doing",
+          "done",
+          "approved",
+          "rejected"
+        ),
         user_id: Sequelize.INTEGER,
         project_id: Sequelize.INTEGER,
         path: Sequelize.STRING,
         folder: Sequelize.STRING,
         type: Sequelize.STRING,
         filename: Sequelize.STRING,
-        size: Sequelize.STRING,
+        size: Sequelize.INTEGER,
       },
-
 
       {
         sequelize,
         name: {
-          singular: "project",
-          plural: "projects",
+          singular: "task",
+          plural: "tasks",
         },
-      }
+      },
     );
   }
 
